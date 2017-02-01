@@ -12,3 +12,17 @@ c:\users\gabrieln\documents\visual studio 2013\Projects\ChessHostService\ChessHo
 c:\users\gabrieln\documents\visual studio 2013\Projects\ChessHostService\ChessHostService\bin\System.Web.Http.WebHost.xml
 c:\users\gabrieln\documents\visual studio 2013\Projects\ChessHostService\ChessHostService\obj\Debug\ChessHostService.dll
 c:\users\gabrieln\documents\visual studio 2013\Projects\ChessHostService\ChessHostService\obj\Debug\ChessHostService.pdb
+C:\Projects\chesshostservice\ChessHostService\bin\ChessHostService.dll.config
+C:\Projects\chesshostservice\ChessHostService\bin\ChessHostService.dll
+C:\Projects\chesshostservice\ChessHostService\bin\ChessHostService.pdb
+C:\Projects\chesshostservice\ChessHostService\bin\Newtonsoft.Json.dll
+C:\Projects\chesshostservice\ChessHostService\bin\System.Net.Http.Formatting.dll
+C:\Projects\chesshostservice\ChessHostService\bin\System.Web.Http.dll
+C:\Projects\chesshostservice\ChessHostService\bin\System.Web.Http.WebHost.dll
+C:\Projects\chesshostservice\ChessHostService\bin\Newtonsoft.Json.xml
+C:\Projects\chesshostservice\ChessHostService\bin\System.Net.Http.Formatting.xml
+C:\Projects\chesshostservice\ChessHostService\bin\System.Web.Http.xml
+C:\Projects\chesshostservice\ChessHostService\bin\System.Web.Http.WebHost.xml
+C:\Projects\chesshostservice\ChessHostService\obj\Debug\ChessHostService.csprojResolveAssemblyReference.cache
+C:\Projects\chesshostservice\ChessHostService\obj\Debug\ChessHostService.dll
+C:\Projects\chesshostservice\ChessHostService\obj\Debug\ChessHostService.pdb

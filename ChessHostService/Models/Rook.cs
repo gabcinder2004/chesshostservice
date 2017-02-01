@@ -5,15 +5,6 @@ namespace ChessHostService.Models
 {
     public class Rook : ChessPiece
     {
-        public override string Name
-        {
-            get { return "Rook"; }
-        }
-
-        public override ChessPieceType Type
-        {
-            get { return ChessPieceType.Rook;}
-        }
 
         public Rook()
         {
@@ -24,6 +15,24 @@ namespace ChessHostService.Models
         {
             Color = orig.Color;
         }
+
+        public override ChessPiece Clone()
+        {
+            return new Rook(this);
+        }
+
+        public override string Name
+        {
+            get { return "Rook"; }
+        }
+
+        public override int Value { get { return 5; } }
+
+        public override ChessPieceType Type
+        {
+            get { return ChessPieceType.Rook; }
+        }
+
 
         public override bool CanMoveMoreThanOneCell { get { return true; } }
 

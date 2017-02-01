@@ -27,6 +27,8 @@ namespace ChessHostService.Services
 
         public void InitializePlayers()
         {
+            Players = new Dictionary<Color, Player>();
+
             var player1Name = ConfigurationManager.AppSettings["Player1"];
             var player1Url = ConfigurationManager.AppSettings["Player1Url"];
 

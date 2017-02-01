@@ -15,10 +15,17 @@ namespace ChessHostService.Models
             Color = orig.Color;
         }
 
+        public override ChessPiece Clone()
+        {
+            return new Knight(this);
+        }
+
         public override string Name
         {
             get { return "Knight"; }
         }
+
+        public override int Value { get { return 2; } }
 
         public override ChessPieceType Type
         {

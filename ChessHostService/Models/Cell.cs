@@ -17,6 +17,13 @@ namespace ChessHostService.Models
             }
         }
 
+        public Cell(int x, int y, ChessPiece piece)
+        {
+            X = x;
+            Y = y;
+            Piece = piece;
+        }
+
         public override string ToString()
         {
             if (Piece == null)
@@ -32,11 +39,9 @@ namespace ChessHostService.Models
             return Piece == null;
         }
 
-        public Cell(int x, int y, ChessPiece piece)
+        public object Clone()
         {
-            X = x;
-            Y = y;
-            Piece = piece;
+            return new Cell(X, Y, IsEmpty() ? null : Piece.Clone());
         }
 
         public bool Equals(Cell other)

@@ -16,10 +16,16 @@ namespace ChessHostService.Models
             Color = orig.Color;
         }
 
+        public override ChessPiece Clone()
+        {
+            return new Pawn(this);
+        }
         public override string Name
         {
             get { return "Pawn"; }
         }
+
+        public override int Value { get { return 1; } }
 
         public override ChessPieceType Type
         {
@@ -30,10 +36,7 @@ namespace ChessHostService.Models
         {
             get
             {
-                return new List<Tuple<int, int>>
-                {
-                    new Tuple<int, int>(0, 1)
-                };
+                return new List<Tuple<int, int>> { };
             }
         }
 
@@ -41,25 +44,25 @@ namespace ChessHostService.Models
         {
             var pattern = MovePattern;
 
+            var direction = currentCell.Piece.Color == Color.White ? 1 : -1;
+
+            pattern.Add(new Tuple<int, int>(0, 1 * direction));
+
             if (!HasMoved)
             {
-                pattern.Add(new Tuple<int, int>(0, 2));
-            }
-            else
-            {
-                MovePattern.RemoveAll(x => x.Item1 == 2 && x.Item2 == 0);
+                pattern.Add(new Tuple<int, int>(0, 2 * direction));
             }
 
-            var topRightCell = board.Cells.FirstOrDefault(cell => cell.X == currentCell.X + 1 && cell.Y == currentCell.Y + 1);
-            if (topRightCell != null && !topRightCell.IsEmpty() && topRightCell.Piece.Color != currentCell.Piece.Color)
+            var cell1 = board.Cells.FirstOrDefault(cell => cell.X == currentCell.X + 1 && cell.Y == currentCell.Y + (1 * direction));
+            if (cell1 != null && !cell1.IsEmpty() && cell1.Piece.Color != currentCell.Piece.Color)
             {
-                pattern.Add(new Tuple<int, int>(1, 1));
+                pattern.Add(new Tuple<int, int>(1, 1 * direction));
             }
 
-            var topLeftCell = board.Cells.FirstOrDefault(cell => cell.X == currentCell.X - 1 && cell.Y == currentCell.Y + 1);
-            if (topLeftCell != null && !topLeftCell.IsEmpty() && topLeftCell.Piece.Color != currentCell.Piece.Color)
+            var cell2 = board.Cells.FirstOrDefault(cell => cell.X == currentCell.X - 1 && cell.Y == currentCell.Y + (1 * direction));
+            if (cell2 != null && !cell2.IsEmpty() && cell2.Piece.Color != currentCell.Piece.Color)
             {
-                pattern.Add(new Tuple<int, int>(1, 1));
+                pattern.Add(new Tuple<int, int>(-1, 1 * direction));
             }
 
             return base.GetAvailableMoves(pattern, currentCell, board);

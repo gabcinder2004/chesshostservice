@@ -10,15 +10,23 @@ namespace ChessHostService.Models
 
         }
 
-        public King(Pawn orig)
+        public King(King orig)
         {
             Color = orig.Color;
         }
+
+        public override ChessPiece Clone()
+        {
+            return new King(this);
+        }
+
 
         public override string Name
         {
             get { return "King"; }
         }
+
+        public override int Value { get { return 100; } }
 
         public override ChessPieceType Type
         {

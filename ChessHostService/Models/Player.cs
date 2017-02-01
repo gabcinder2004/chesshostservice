@@ -29,8 +29,16 @@ namespace ChessHostService.Models
 
             var stopwatch = Stopwatch.StartNew();
 
-            // List data response.
-            HttpResponseMessage response = client.PostAsync("/api/nextMove", byteContent).Result;  // Blocking call!
+            HttpResponseMessage response;
+            try
+            {
+                // List data response.
+                response = client.PostAsync("/api/nextMove", byteContent).Result; // Blocking call!
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
 
             stopwatch.Stop();
 

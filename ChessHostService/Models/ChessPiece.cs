@@ -6,14 +6,17 @@ using ChessHostService.Services;
 
 namespace ChessHostService.Models
 {
-    public class ChessPiece
+    public abstract class ChessPiece
     {
         public Color Color { get; set; }
         public bool HasMoved { get; set; }
         public virtual bool CanMoveMoreThanOneCell { get; set; }
 
-        public virtual string Name { get { throw new NotImplementedException(); } }
+        public abstract string Name { get; }
         public virtual List<Tuple<int, int>> MovePattern { get; set; }
+        public List<ChessMove> AvailableMoves { get; set; }
+
+        public abstract int Value { get; }
 
         public string ShortName
         {
@@ -27,13 +30,15 @@ namespace ChessHostService.Models
 
         public ChessPiece()
         {
-
+            AvailableMoves = new List<ChessMove>();
         }
 
         public ChessPiece(Color color)
         {
             Color = color;
         }
+
+        public abstract ChessPiece Clone();
 
         public virtual List<ChessMove> GetAvailableMoves(List<Tuple<int, int>> movePattern, Cell currentCell, ChessBoard board)
         {
@@ -56,7 +61,14 @@ namespace ChessHostService.Models
 
                     var action = newCell.IsEmpty() ? ChessAction.MOVE : ChessAction.KILL;
 
-                    availableMoves.Add(new ChessMove(currentCell, newCell, action, currentCell.Piece.Color));
+                    var move = new ChessMove(currentCell, newCell, action, currentCell.Piece.Color);
+
+                    //if (action == ChessAction.KILL)
+                    //{
+                    //    move.Value += (newCell.Piece.Value - currentCell.Piece.Value);
+                    //}
+
+                    availableMoves.Add(move);
 
                     // If the piece moved, then try to move another cell in the same direction (except for Knights)
                     if (action == ChessAction.MOVE && currentCell.Piece.CanMoveMoreThanOneCell)

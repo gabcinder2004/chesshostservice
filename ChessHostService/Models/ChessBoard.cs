@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ChessHostService.Models
 {
@@ -55,6 +56,11 @@ namespace ChessHostService.Models
                     Cells.Add(new Cell(x, y, null));
                 }
             }
+        }
+        public ChessBoard Clone()
+        {
+            var board = new ChessBoard { Cells = Cells.Select(item => (Cell)item.Clone()).ToList() };
+            return board;
         }
 
         public void MakeMove(ChessMove move)

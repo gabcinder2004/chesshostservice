@@ -18,13 +18,16 @@ namespace ChessHostService.Controllers
             var chessGame = new ChessGame();
             DataOwner.AddGame(chessGame);
 
-            var runner = new GameRunner(chessGame);
-            var result = runner.StartGame();
+            var gameSolver = new GameSolver(chessGame);
+            var move = gameSolver.NextMove(chessGame.Board, Color.White);
+               
+            //var runner = new GameRunner(chessGame);
+            //var result = runner.StartGame();
 
-            if (result == false)
-            {
-                return BadRequest("Something went wrong");
-            }
+            //if (result == false)
+            //{
+            //    return BadRequest("Something went wrong");
+            //}
 
             return Ok(chessGame);
         }
